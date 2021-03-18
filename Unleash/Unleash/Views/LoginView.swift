@@ -12,9 +12,6 @@ struct LoginView: View {
         NavigationView {
             ScrollView {
                 VStack(alignment: .leading, spacing: 20) {
-                    Text("Login")
-                        .font(.system(size: 33, weight: .bold))
-                        .padding(.vertical, 20)
                     VStack(spacing: 5) {
                         TextField("Email", text: .constant("Email"))
                             .frame(height: 30)
@@ -45,6 +42,7 @@ struct LoginView: View {
                     })
                     
                     Text("Forgot your password?")
+                        .font(.caption)
                         .frame(maxWidth: .infinity)
                         .padding(.vertical)
                     
@@ -66,8 +64,7 @@ struct LoginView: View {
             }
             .background(Color.black.ignoresSafeArea())
             .foregroundColor(.white)
-            .navigationBarTitle("Login", displayMode: .inline)
-            .navigationBarHidden(true)
+            .navigationBarTitle("Login")
         }
     }
 }
