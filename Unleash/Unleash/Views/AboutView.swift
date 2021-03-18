@@ -9,6 +9,7 @@ import SwiftUI
 
 struct AboutView: View {
     @Environment(\.presentationMode) var presentationMode
+    
     var body: some View {
         VStack {
             HStack {
@@ -82,7 +83,6 @@ struct AboutView: View {
         .padding(10)
         .background(Color.black.opacity(0.95))
         .preferredColorScheme(.light)
-        
     }
 }
 
