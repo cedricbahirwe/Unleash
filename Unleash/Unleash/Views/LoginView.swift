@@ -50,6 +50,8 @@ struct LoginView: View {
                     
                     HStack(spacing: 2) {
                         Text("Don't have an account?")
+                        
+                        
                         Text("Join")
                             .fontWeight(.semibold)
                     }

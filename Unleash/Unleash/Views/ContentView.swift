@@ -8,16 +8,24 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var selection: Int = 1
+    @State private var selection: Int = 4
     var body: some View {
         TabView(selection: $selection,
                 content:  {
-                    ContributionView().tag(1)
+                    HomeView().tag(1)
+                        .tabItem {
+                            Image(systemName: "photo.fill")
+                        }
+                    SearchView().tag(2)
+                        .tabItem {
+                            Image(systemName: "magnifyingglass")
+                        }
+                    ContributionView().tag(3)
                         .tabItem {
                             Image(systemName: "plus.square.fill")
                                 .foregroundColor(.white)
                         }
-                    LoginView().tag(2)
+                    LoginView().tag(4)
                         .tabItem {
                             Image(systemName: "person.crop.circle.fill")
                                 .foregroundColor(.white)
