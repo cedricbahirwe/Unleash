@@ -10,10 +10,11 @@ import SwiftUI
 struct SearchView: View {
     @State private var isEditing = false
     @State private var pickerSelection = 1
+    @State private var searchText = ""
     var body: some View {
         VStack {
             HStack {
-                TextField("Search Photos", text: .constant(""), onCommit: {
+                TextField("Search Photos", text: $searchText, onCommit: {
                     withAnimation {
                         isEditing = false
                     }
@@ -73,10 +74,14 @@ struct SearchView: View {
                     ) {
                         VStack {
                             ForEach(0..<5) { i in
-                                VStack(alignment: .leading) {
-                                    Text("Recent \(i)")
-                                        .font(.system(size: 20, weight: .regular))
-                                    Color.gray.frame(height: 0.5)
+                                Button(action: {
+                                    searchText = String(i)
+                                }){
+                                    VStack(alignment: .leading, spacing: 6) {
+                                        Text("recent \(i)")                                            .font(.system(size: 19, weight: .regular))
+                                        Color.gray.frame(height: 0.5)
+                                    }
+                                    .foregroundColor(.white)
                                 }
                             }
                         }
@@ -98,11 +103,18 @@ struct SearchView: View {
                                     .padding(.vertical, 3)
                         ) {
                             ForEach(0..<5) { i in
-                                VStack(alignment: .leading) {
-                                    Text("Trending \(i+1)")
-                                        .font(.system(size: 20, weight: .regular))
-                                    Color.gray.frame(height: 0.5)
+                                Button(action: {
+                                    searchText = String(i)
+                                }){
+                                    VStack(alignment: .leading, spacing: 6) {
+                                        Text("trending \(i+1)")
+                                            .font(.system(size: 19, weight: .regular))
+                                        Color.gray.frame(height: 0.5)
+                                    }
+                                    .foregroundColor(.white)
                                 }
+                                
+
                             }
                         }
                     }
