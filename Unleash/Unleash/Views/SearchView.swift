@@ -24,12 +24,30 @@ struct SearchView: View {
                     .background(Color(.systemGray6))
                     .cornerRadius(7)
                     .overlay(
-                        Image(systemName: "magnifyingglass")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .foregroundColor(.gray)
-                            .padding(8)
-                            .frame(width: 30, height: 30)
+                        HStack {
+                            Image(systemName: "magnifyingglass")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .foregroundColor(.gray)
+                                .padding(8)
+                                .frame(width: 30, height: 30)
+                            Spacer()
+                            if !searchText.isEmpty  {
+                                Button(action: {
+                                    withAnimation {
+                                        searchText = ""
+                                    }
+                                }) {
+                                    Image(systemName: "multiply.circle.fill")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .foregroundColor(.gray)
+                                        .padding(8)
+                                        .frame(width: 30, height: 30)
+                                }
+                            }
+                            
+                        }
                         , alignment: .leading
                 )
                     .onTapGesture {
@@ -40,6 +58,9 @@ struct SearchView: View {
                 if isEditing {
                     Image(systemName: "keyboard.chevron.compact.down")
                         .onTapGesture {
+                            withAnimation {
+                                isEditing = false
+                            }
                             UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
                         }
                 } else if pickerSelection == 1 {
