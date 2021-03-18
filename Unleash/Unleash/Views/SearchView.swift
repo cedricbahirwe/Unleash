@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SearchView: View {
     @State private var isEditing = false
+    @State private var presentAlertSheet = false
     @State private var pickerSelection = 1
     @State private var searchText = ""
     var body: some View {
@@ -86,7 +87,9 @@ struct SearchView: View {
                                     Text("Recent")
                                         .font(.system(size: 22, weight: .bold))
                                     Spacer()
-                                    Button(action: {}, label: {
+                                    Button(action: {
+                                        presentAlertSheet.toggle()
+                                    }, label: {
                                         Text("Clear")
                                             .foregroundColor(.white)
                                     })
@@ -145,8 +148,11 @@ struct SearchView: View {
             }
         }
         .padding(10)
+        .actionSheet(isPresented: $presentAlertSheet) {
+            ActionSheet(title: Text("These items will be deleted. This action cannot be undone."), message: nil, buttons: [.destructive(Text("Clear Recent Searches")), .cancel()])
+                
+        }
         .preferredColorScheme(.dark)
-        
         
     }
 }
