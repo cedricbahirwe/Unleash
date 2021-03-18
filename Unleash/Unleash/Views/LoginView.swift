@@ -51,9 +51,10 @@ struct LoginView: View {
                     HStack(spacing: 2) {
                         Text("Don't have an account?")
                         
-                        
-                        Text("Join")
-                            .fontWeight(.semibold)
+                        NavigationLink(destination: SignUpView()) {
+                            Text("Join")
+                                .fontWeight(.semibold)
+                        }
                     }
                     .frame(maxWidth: .infinity)
                     .font(.system(size: 18))

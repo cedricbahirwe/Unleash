@@ -10,10 +10,7 @@ import SwiftUI
 struct SignUpView: View {
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 20) {
-                Text("Join Unleash")
-                    .font(.system(size: 33, weight: .bold))
-                    .padding(.vertical, 20)
+            VStack(alignment: .leading, spacing: 30) {
                 VStack(spacing: 5) {
                     TextField("First name", text: .constant("First name"))
                         .frame(height: 30)
@@ -21,7 +18,6 @@ struct SignUpView: View {
                     
                     Color.gray.frame(height: 0.5)
                 }
-                .padding(.vertical)
                 VStack(spacing: 5) {
                     TextField("Last name", text: .constant("Last name"))
                         .frame(height: 30)
@@ -29,7 +25,14 @@ struct SignUpView: View {
                     
                     Color.gray.frame(height: 0.5)
                 }
-                .padding(.vertical)
+                
+                VStack(spacing: 5) {
+                    TextField("User name", text: .constant("Username"))
+                        .frame(height: 30)
+                        .foregroundColor(.gray)
+                    
+                    Color.gray.frame(height: 0.5)
+                }
                 VStack(spacing: 5) {
                     TextField("Email name", text: .constant("Email"))
                         .frame(height: 30)
@@ -38,13 +41,13 @@ struct SignUpView: View {
                     Color.gray.frame(height: 0.5)
                 }
 
-                .padding(.vertical)
                 VStack(spacing: 8) {
                     TextField("Password", text: .constant("Password"))
                         .frame(height: 30)
+                        .foregroundColor(.gray)
+
                     Color.gray.frame(height: 0.5)
                 }
-                .foregroundColor(.gray)
                 
                 
                 Button(action: {
@@ -72,12 +75,13 @@ struct SignUpView: View {
                 .font(.system(size: 13, weight: .regular))
                 .frame(maxWidth: .infinity)
             }
+            .disableAutocorrection(true)
             .font(.system(size: 16))
             .padding()
         }
         .background(Color.black.ignoresSafeArea())
         .foregroundColor(.white)
-        .navigationBarTitle("Login", displayMode: .inline)
+        .navigationBarTitle("Join Unleash", displayMode: .large)
         .navigationBarHidden(false)
         .colorScheme(.dark)
     }
@@ -85,6 +89,9 @@ struct SignUpView: View {
 
 struct SignUpView_Previews: PreviewProvider {
     static var previews: some View {
-        SignUpView()
+        NavigationView {
+            SignUpView()
+        }
+        .accentColor(.white)
     }
 }
