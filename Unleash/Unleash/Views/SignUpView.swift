@@ -79,11 +79,9 @@ struct SignUpView: View {
             .font(.system(size: 16))
             .padding()
         }
-        .background(Color.black.ignoresSafeArea())
-        .foregroundColor(.white)
         .navigationBarTitle("Join Unleash", displayMode: .large)
         .navigationBarHidden(false)
-        .colorScheme(.dark)
+        .preferredColorScheme(.dark)
     }
 }
 
@@ -92,6 +90,5 @@ struct SignUpView_Previews: PreviewProvider {
         NavigationView {
             SignUpView()
         }
-        .accentColor(.white)
     }
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8201F948260400DA004B55A9 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8201F947260400DA004B55A9 /* AboutView.swift */; };
 		82DFA3AD25FDF31B008F351D /* UnleashApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DFA3AC25FDF31B008F351D /* UnleashApp.swift */; };
 		82DFA3AF25FDF31B008F351D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DFA3AE25FDF31B008F351D /* ContentView.swift */; };
 		82DFA3B125FDF31B008F351D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82DFA3B025FDF31B008F351D /* Assets.xcassets */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8201F947260400DA004B55A9 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		82DFA3A925FDF31A008F351D /* Unleash.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Unleash.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82DFA3AC25FDF31B008F351D /* UnleashApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnleashApp.swift; sourceTree = "<group>"; };
 		82DFA3AE25FDF31B008F351D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 				82FAD64125FF3ACE001A86FD /* ContributionView.swift */,
 				82DFA3BC25FDF340008F351D /* LoginView.swift */,
 				82E81D602603EA7900E287D2 /* SignUpView.swift */,
+				8201F947260400DA004B55A9 /* AboutView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -161,6 +164,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8201F948260400DA004B55A9 /* AboutView.swift in Sources */,
 				82E81D5A2603E9A700E287D2 /* SearchView.swift in Sources */,
 				82FAD64225FF3ACE001A86FD /* ContributionView.swift in Sources */,
 				82DFA3BD25FDF340008F351D /* LoginView.swift in Sources */,

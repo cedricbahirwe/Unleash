@@ -51,6 +51,7 @@ struct LoginView: View {
                         
                         NavigationLink(destination: SignUpView()) {
                             Text("Join")
+                                .foregroundColor(.white)
                                 .fontWeight(.semibold)
                         }
                     }
@@ -62,8 +63,6 @@ struct LoginView: View {
                 .font(.system(size: 16))
                 .padding()
             }
-            .background(Color.black.ignoresSafeArea())
-            .foregroundColor(.white)
             .navigationBarTitle("Login")
         }
     }

@@ -8,8 +8,29 @@
 import SwiftUI
 
 struct HomeView: View {
+    @State private var showAboutPage: Bool = false
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            HStack {
+                Image(systemName: "lasso.sparkles")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 25, height: 25)
+                    .onTapGesture {
+                        showAboutPage.toggle()
+                    }
+                Spacer()
+                Text("Unleash")
+                    .font(.system(size: 24, weight: .bold))
+                Spacer()
+            }
+            .padding()
+            Spacer()
+        }
+        .sheet(isPresented: $showAboutPage) {
+            AboutView()
+        }
+        
     }
 }
 
