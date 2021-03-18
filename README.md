@@ -1,2 +1,2 @@
 # Unleash
-A UI Clone of Unsplash iOS application
+A Photo Sharing application
