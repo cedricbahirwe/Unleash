@@ -16,7 +16,7 @@ struct HomeView: View {
         ZStack(alignment: .top) {
             
             ScrollView {
-                LazyVStack {
+                LazyVStack(spacing: 2, pinnedViews: []) {
                     ForEach(pictures, id: \.self) { picture in
                         Image(uiImage: UIImage(named: picture) ?? .init())
                             .resizable()
@@ -42,7 +42,7 @@ struct HomeView: View {
                             showAboutPage.toggle()
                         }
                     Spacer()
-                    Text("Unleash")
+                    Text("Unleash\(pictures.count)")
                         .font(.system(size: 24, weight: .bold))
                     Spacer()
                 }
