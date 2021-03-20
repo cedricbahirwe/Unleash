@@ -25,7 +25,7 @@ struct ContentView: View {
                             Image(systemName: "plus.square.fill")
                                 .foregroundColor(.white)
                         }
-                    LoginView().tag(4)
+                    LoginView(isAlerted: .constant(false)).tag(4)
                         .tabItem {
                             Image(systemName: "person.crop.circle.fill")
                                 .foregroundColor(.white)

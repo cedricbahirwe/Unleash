@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SignUpView: View {
+    @Binding var isAlerted: Bool
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 30) {
@@ -59,7 +60,7 @@ struct SignUpView: View {
                         .frame(maxWidth: .infinity)
                         .frame(height: 42)
                         .background(Color.white)
-                        .cornerRadius(3)
+                        .cornerRadius(5)
                     
                 })
                 
@@ -79,16 +80,15 @@ struct SignUpView: View {
             .font(.system(size: 16))
             .padding()
         }
-        .navigationBarTitle("Join Unleash", displayMode: .large)
+        .navigationBarTitle("Join Unleash", displayMode: isAlerted ? .inline : .large)
         .navigationBarHidden(false)
-        .preferredColorScheme(.dark)
     }
 }
 
 struct SignUpView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            SignUpView()
+            SignUpView(isAlerted: .constant(false))
         }
     }
 }

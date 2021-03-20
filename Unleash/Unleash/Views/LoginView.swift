@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct LoginView: View {
+    @Binding var isAlerted: Bool
+    
     var body: some View {
         NavigationView {
             ScrollView {
@@ -37,19 +39,23 @@ struct LoginView: View {
                             .frame(maxWidth: .infinity)
                             .frame(height: 42)
                             .background(Color.white)
-                            .cornerRadius(3)
+                            .cornerRadius(5)
                         
                     })
                     
-                    Text("Forgot your password?")
-                        .font(.caption)
-                        .frame(maxWidth: .infinity)
-                        .padding(.vertical)
+                    NavigationLink(destination: ResetView()) {
+                        
+                        Text("Forgot your password?")
+                            .foregroundColor(.white)
+                            .font(.caption)
+                            .frame(maxWidth: .infinity)
+                            .padding(.vertical)
+                    }
                     
                     HStack(spacing: 2) {
                         Text("Don't have an account?")
                         
-                        NavigationLink(destination: SignUpView()) {
+                        NavigationLink(destination: SignUpView(isAlerted: $isAlerted)) {
                             Text("Join")
                                 .foregroundColor(.white)
                                 .fontWeight(.semibold)
@@ -57,19 +63,25 @@ struct LoginView: View {
                     }
                     .frame(maxWidth: .infinity)
                     .font(.system(size: 18))
-                    
-                    
                 }
                 .font(.system(size: 16))
                 .padding()
             }
-            .navigationBarTitle("Login")
+            .navigationBarTitle("Login", displayMode: isAlerted ? .inline : .large)
+            .navigationBarItems(leading:
+                                    Button(action: {
+                                        isAlerted.toggle()
+                                    }, label: {
+                                        Text("Cancel").foregroundColor(.white)
+                                    })
+                                    .opacity(isAlerted ? 1 : 0)
+            )
         }
     }
 }
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView()
+        LoginView(isAlerted: .constant(false))
     }
 }
