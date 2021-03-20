@@ -41,6 +41,7 @@
 		82E81D5A2603E9A700E287D2 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E81D592603E9A700E287D2 /* SearchView.swift */; };
 		82E81D5D2603E9AF00E287D2 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E81D5C2603E9AF00E287D2 /* HomeView.swift */; };
 		82E81D612603EA7900E287D2 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E81D602603EA7900E287D2 /* SignUpView.swift */; };
+		82ECC689260678980025FA75 /* BlogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ECC688260678980025FA75 /* BlogView.swift */; };
 		82FAD64225FF3ACE001A86FD /* ContributionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82FAD64125FF3ACE001A86FD /* ContributionView.swift */; };
 /* End PBXBuildFile section */
 
@@ -81,6 +82,7 @@
 		82E81D592603E9A700E287D2 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		82E81D5C2603E9AF00E287D2 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		82E81D602603EA7900E287D2 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		82ECC688260678980025FA75 /* BlogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogView.swift; sourceTree = "<group>"; };
 		82FAD64125FF3ACE001A86FD /* ContributionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContributionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -169,6 +171,7 @@
 			children = (
 				82DFA3AE25FDF31B008F351D /* ContentView.swift */,
 				82E81D5C2603E9AF00E287D2 /* HomeView.swift */,
+				82ECC688260678980025FA75 /* BlogView.swift */,
 				82E81D592603E9A700E287D2 /* SearchView.swift */,
 				82FAD64125FF3ACE001A86FD /* ContributionView.swift */,
 				82DFA3BC25FDF340008F351D /* LoginView.swift */,
@@ -279,6 +282,7 @@
 				82E81D612603EA7900E287D2 /* SignUpView.swift in Sources */,
 				82E81D5D2603E9AF00E287D2 /* HomeView.swift in Sources */,
 				82DFA3AF25FDF31B008F351D /* ContentView.swift in Sources */,
+				82ECC689260678980025FA75 /* BlogView.swift in Sources */,
 				82DFA3AD25FDF31B008F351D /* UnleashApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

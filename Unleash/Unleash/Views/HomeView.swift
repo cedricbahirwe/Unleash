@@ -14,8 +14,7 @@ struct HomeView: View {
     
     var body: some View {
         ZStack(alignment: .top) {
-            
-            ScrollView {
+            ScrollView(showsIndicators: false) {
                 LazyVStack(spacing: 2, pinnedViews: []) {
                     ForEach(pictures, id: \.self) { picture in
                         Image(uiImage: UIImage(named: picture) ?? .init())
@@ -71,9 +70,7 @@ struct HomeView: View {
                     }
                     Color.white.frame(height:2).opacity(0.3)
                 }
-            }
-            
-        }
+            }        }
         .sheet(isPresented: $showAboutPage) {
             AboutView()
         }
@@ -87,7 +84,6 @@ struct HomeView: View {
         
         for item in items {
             if item.hasPrefix("un-") {
-                // this is a picture to load!
                 let picture = item //String(item.dropFirst(3))
                 pictures.append(picture)
             }
