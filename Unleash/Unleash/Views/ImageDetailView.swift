@@ -8,14 +8,15 @@
 import SwiftUI
 
 struct ImageDetailView: View {
-    
+    @Binding var isPresented: Bool
     let image: String
-    
     @State private var offset = CGSize.zero
     @State private var showPopOver = false
     @State private var showOptions = true
     @State var scale: CGFloat = 1.0
     
+    var animation: Namespace.ID
+
     @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
@@ -29,6 +30,8 @@ struct ImageDetailView: View {
                     .scaleEffect(scale)
 //                        .frame(width: size.width)
                     .offset(offset)
+                    .matchedGeometryEffect(id: "picture\(image)", in: animation, isSource: true)
+
                     .highPriorityGesture(
                         DragGesture()
                             .onChanged { self.offset = $0.translation }
@@ -44,7 +47,7 @@ struct ImageDetailView: View {
                     .contextMenu(ContextMenu(menuItems: {
                         VStack {
                             Button(action: {
-                                presentationMode.wrappedValue.dismiss()
+                                isPresented.toggle()
                             }, label: {
                                     Image(systemName: "trash")
                                         .foregroundColor(.red)
@@ -63,6 +66,8 @@ struct ImageDetailView: View {
                         }
 
                     }))
+
+
                 Spacer()
             }
             .contentShape(Rectangle())
@@ -74,7 +79,9 @@ struct ImageDetailView: View {
                 HStack {
                     
                     Button(action: {
-                        presentationMode.wrappedValue.dismiss()
+                        withAnimation(.spring(response: 0.5, dampingFraction: 0.7)) {
+                            isPresented.toggle()
+                        }
                     }, label: {
                         Image(systemName: "multiply")
                             .font(.title3)
@@ -142,16 +149,16 @@ struct ImageDetailView: View {
             }
             
         }
+        .background(Color.black.ignoresSafeArea())
         .navigationBarTitle("")
         .navigationBarHidden(true)
     }
     
     private func actionShareSheet() {
         print("sharing")
-        let img = UIImage(named: image)
         let msg = "Please Checkout Unleash, a photo sharing"
         let link = URL(string: "https://github.com/cedricbahirwe/Unleash")!
-        let av = UIActivityViewController(activityItems: [img, msg], applicationActivities: nil)
+        let av = UIActivityViewController(activityItems: [msg, link], applicationActivities: nil)
         av.completionWithItemsHandler = { (nil, completed, _, error) in
             if completed {
                 print("Completed")
@@ -166,6 +173,10 @@ struct ImageDetailView: View {
 
 struct ImageDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        ImageDetailView(image: "analog")
+        ImageDetailView(
+            isPresented: .constant(false),
+            image: "analog",
+            animation: Namespace.init().wrappedValue
+        )
     }
 }

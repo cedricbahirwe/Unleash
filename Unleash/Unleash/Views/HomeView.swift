@@ -12,15 +12,25 @@ struct HomeView: View {
     @State private var selectedTab: Int = 1
     @State private var pictures = [String]()
     
+    @Namespace private var animation
+    @State private var showDetails: Bool = false
+    @State private var navigateDetails: Bool = false
+    @State private var selectedImage: String = "kivu"
+
+    
     var body: some View {
         NavigationView {
+            
             ZStack(alignment: .top) {
-                ScrollView(showsIndicators: false) {
-                    LazyVStack(spacing: 2, pinnedViews: []) {
-                        ForEach(pictures, id: \.self) { picture in
-                            
-                            NavigationLink(
-                                destination: ImageDetailView(image: picture)) {
+                NavigationLink(
+                    destination: ImageDetailView(isPresented: $navigateDetails, image: selectedImage, animation: animation),
+                    isActive: $navigateDetails) {}
+                if !showDetails {
+                    ScrollView(showsIndicators: false) {
+                        LazyVStack(spacing: 2, pinnedViews: []) {
+                            ForEach(pictures, id: \.self) { picture in
+                                
+                                
                                 Image(uiImage: UIImage(named: picture) ?? .init())
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
@@ -33,52 +43,64 @@ struct HomeView: View {
                                         
                                     )
                                     .buttonStyle(PlainButtonStyle())
-
-                                
+                                    .matchedGeometryEffect(id: "picture\(picture)", in: animation)
+                                    .onTapGesture {
+                                        withAnimation {
+                                            selectedImage = picture
+                                            let random = Int.random(in: 1...10)
+                                            if random%2 == 0 {
+                                                showDetails.toggle()
+                                            } else {
+                                                navigateDetails.toggle()
+                                            }
+                                        }
+                                    }
                             }
                         }
                     }
-                }
-                
-                VStack {
-                    HStack {
-                        Image(systemName: "lasso.sparkles")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 25, height: 25)
-                            .onTapGesture {
-                                showAboutPage.toggle()
-                            }
-                        Spacer()
-                        Text("Unleash\(pictures.count)")
-                            .font(.system(size: 24, weight: .bold))
-                        Spacer()
-                    }
-                    .padding()
                     
-                    ZStack(alignment: .bottom) {
-                        ScrollView(.horizontal, showsIndicators: false) {
-                            HStack(spacing: 0) {
-                                ForEach(0..<10) { i in
-                                    VStack {
-                                        Text("Editorial")
-                                            .fontWeight(.semibold)
-                                            .padding(.leading)
+                    VStack {
+                        HStack {
+                            Image(systemName: "lasso.sparkles")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 25, height: 25)
+                                .onTapGesture {
+                                    showAboutPage.toggle()
+                                }
+                            Spacer()
+                            Text("Unleash\(pictures.count)")
+                                .font(.system(size: 24, weight: .bold))
+                            Spacer()
+                        }
+                        .padding()
+                        
+                        ZStack(alignment: .bottom) {
+                            ScrollView(.horizontal, showsIndicators: false) {
+                                HStack(spacing: 0) {
+                                    ForEach(0..<10) { i in
+                                        VStack {
+                                            Text("Editorial")
+                                                .fontWeight(.semibold)
+                                                .padding(.leading)
+                                            
+                                            Color.white
+                                                .frame(height:2)
+                                                .opacity(selectedTab == i+1 ? 1 : 0)
+                                        }
+                                        .contentShape(Rectangle())
+                                        .onTapGesture {
+                                            selectedTab = i+1
+                                        }
                                         
-                                        Color.white
-                                            .frame(height:2)
-                                            .opacity(selectedTab == i+1 ? 1 : 0)
                                     }
-                                    .contentShape(Rectangle())
-                                    .onTapGesture {
-                                        selectedTab = i+1
-                                    }
-                                    
                                 }
                             }
+                            Color.white.frame(height:2).opacity(0.3)
                         }
-                        Color.white.frame(height:2).opacity(0.3)
                     }
+                } else {
+                    ImageDetailView(isPresented: $showDetails, image: selectedImage, animation: animation)
                 }
                 
             }
