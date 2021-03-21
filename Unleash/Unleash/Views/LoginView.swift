@@ -12,7 +12,7 @@ struct LoginView: View {
     
     var body: some View {
         NavigationView {
-            ScrollView {
+            GeometryReader { _ in
                 VStack(alignment: .leading, spacing: 20) {
                     VStack(spacing: 5) {
                         TextField("Email", text: .constant("Email"))
@@ -43,7 +43,7 @@ struct LoginView: View {
                         
                     })
                     
-                    NavigationLink(destination: ResetView()) {
+                    NavigationLink(destination: ResetView(isAlerted: $isAlerted)) {
                         
                         Text("Forgot your password?")
                             .foregroundColor(.white)
@@ -63,16 +63,20 @@ struct LoginView: View {
                     }
                     .frame(maxWidth: .infinity)
                     .font(.system(size: 18))
+                    Spacer()
                 }
                 .font(.system(size: 16))
                 .padding()
             }
+            .viewIgnoreKeyboard()
             .navigationBarTitle("Login", displayMode: isAlerted ? .inline : .large)
             .navigationBarItems(leading:
                                     Button(action: {
                                         isAlerted.toggle()
                                     }, label: {
-                                        Text("Cancel").foregroundColor(.white)
+                                        Text("Cancel")
+                                            .fontWeight(.light)
+                                            .foregroundColor(.white)
                                     })
                                     .opacity(isAlerted ? 1 : 0)
             )

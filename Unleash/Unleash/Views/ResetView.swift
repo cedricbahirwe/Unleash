@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ResetView: View {
+    @Binding var isAlerted: Bool
     var body: some View {
         VStack(alignment: .leading, spacing: 18) {
             Text("Reset Password")
@@ -38,14 +39,15 @@ struct ResetView: View {
         }
         .padding(.horizontal)
         .offset(y: -45)
-        .navigationBarTitle("", displayMode: .automatic)
+        .navigationBarTitle(isAlerted ? "Reset Unleash" : "", displayMode: isAlerted ? .inline : .automatic)
+
     }
 }
 
 struct ResetView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            ResetView()
+            ResetView(isAlerted: .constant(false))
         }
     }
 }
