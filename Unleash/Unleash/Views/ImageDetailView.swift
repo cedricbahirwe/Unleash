@@ -17,8 +17,6 @@ struct ImageDetailView: View {
     
     var animation: Namespace.ID
 
-    @Environment(\.presentationMode) var presentationMode
-
     var body: some View {
         ZStack {
             

@@ -13,6 +13,7 @@ struct HomeView: View {
     @State private var pictures = [String]()
     
     @Namespace private var animation
+    @Namespace private var notAnimated
     @State private var showDetails: Bool = false
     @State private var navigateDetails: Bool = false
     @State private var selectedImage: String = "kivu"
@@ -23,9 +24,9 @@ struct HomeView: View {
             
             ZStack(alignment: .top) {
                 NavigationLink(
-                    destination: ImageDetailView(isPresented: $navigateDetails, image: selectedImage, animation: animation),
+                    destination: ImageDetailView(isPresented: $navigateDetails, image: selectedImage, animation: notAnimated),
                     isActive: $navigateDetails) {}
-                if !showDetails {
+                if !showDetails  {
                     ScrollView(showsIndicators: false) {
                         LazyVStack(spacing: 2, pinnedViews: []) {
                             ForEach(pictures, id: \.self) { picture in
@@ -99,7 +100,8 @@ struct HomeView: View {
                             Color.white.frame(height:2).opacity(0.3)
                         }
                     }
-                } else {
+                }
+                if showDetails {
                     ImageDetailView(isPresented: $showDetails, image: selectedImage, animation: animation)
                 }
                 
