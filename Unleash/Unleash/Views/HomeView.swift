@@ -70,7 +70,7 @@ struct HomeView: View {
                                     showAboutPage.toggle()
                                 }
                             Spacer()
-                            Text("Unleash\(pictures.count)")
+                            Text("Unleash")
                                 .font(.system(size: 24, weight: .bold))
                             Spacer()
                         }
